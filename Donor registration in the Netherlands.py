@@ -1,38 +1,38 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[6]:
 
 
 #importing pandas and dataset
 
 
-# In[10]:
+# In[7]:
 
 
 import pandas as pd
 
 
-# In[139]:
+# In[8]:
 
 
 df = pd.read_excel("Donor registration.xlsx")
 
 
-# In[140]:
+# In[9]:
 
 
 #examining the data
 df.info()
 
 
-# In[141]:
+# In[10]:
 
 
 df
 
 
-# In[142]:
+# In[11]:
 
 
 #creating columns for percentages
@@ -41,37 +41,53 @@ df['Partly_percent'] = df.Partly * 100 / (df.Permission+df.Partly+df.No_permissi
 df['No_permission_percent'] = df.No_permission * 100 / (df.Permission+df.Partly+df.No_permission)
 
 
-# In[143]:
+# In[12]:
 
 
 #writing the code for just selecting where people come from, not their generation
 df[(df.Background =='Dutch') | (df.Background =='Western') | (df.Background=='Non-western')]
 
 
-# In[144]:
+# In[28]:
 
 
 #graphing the info
-df[(df.Background =='Dutch') | (df.Background =='Western') | (df.Background=='Non-western')].plot(x ='Time', y=["Permission_percent", "Partly_percent", "No_permission_percent"], kind = 'line')
+import matplotlib.pyplot as plt
+ax = plt.gca()
+
+df[(df.Background =='Dutch') | (df.Background =='Western') | (df.Background=='Non-western')].groupby(by='Background').plot(kind='line',x='Time',y=["Permission_percent", "Partly_percent", "No_permission_percent"],ax=ax)
+
+plt.show()
 
 
-# In[153]:
+# In[14]:
 
 
 #This graph is too messy to understand, so I'm making three percentage graphs
 df[(df.Background =='Dutch') | (df.Background =='Western') | (df.Background=='Non-western')].groupby(by='Background').plot(x ='Time', y=["Permission_percent", "Partly_percent", "No_permission_percent"], kind = 'line')
 
 
-# In[146]:
+# In[15]:
 
 
-#as well as a graph for just 'No permission'
+#as well as a graphs for just 'No permission'
 df[(df.Background =='Dutch') | (df.Background =='Western') | (df.Background=='Non-western')].groupby(by='Background').plot(x ='Time', y="No_permission_percent", kind = 'line')
 
 
-# In[158]:
+# In[19]:
 
 
 #making the same graphs for 1st and 2nd generation migrants (unknown whether they are western or not
 df[(df.Background =='1gen')|(df.Background =='2gen')].groupby(by='Background').plot(x ='Time', y=["Permission_percent", "Partly_percent", "No_permission_percent"], kind = 'line')
+
+
+# In[29]:
+
+
+#making a chart for 'no permission' for all types
+ax = plt.gca()
+
+df[(df.Background =='Dutch') | (df.Background =='Western') | (df.Background=='Non-western')].groupby(by='Background').plot(kind='line',x='Time',y='No_permission_percent',ax=ax)
+
+plt.show()
 
