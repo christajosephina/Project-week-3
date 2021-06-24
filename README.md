@@ -30,11 +30,11 @@ For this week's project, I opened up the excel file in a Jupyter Notebook. I not
 was not being displayed correctly, so I went into the excel file to get rid of extra white
 columns as well as information that was not needed (but was being read wrongly, such as a 
 row with information on who is the source). I then tried to create the same graphs on percentages
-as I did last week.
+as I did last week. 
 
 I chose specifically to not show natives and non-western migrants in the same chart, because both 
 charts already included three different variables (donor, non-donor, partly donor). I thought this 
 would be too confusing if combined. This is also visible in the python file, were I tried to 
-create the chart with all the lines included. Next to this, I proceeded to create to graphs for 1st 
-and 2nd generation immigrants. There's a limitationhere: it is not clear which share of these 
-immigrants is western/non-western.
+create the chart with all the lines included. Instead, I made a graph for only 'no permission'.
+Next to this, I proceeded to create to graphs for 1st and 2nd generation immigrants. There's a 
+limitationhere: it is not clear which share of these immigrants is western/non-western.
