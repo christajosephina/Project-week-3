@@ -1,5 +1,5 @@
 # Project-week-3
-Lede homework
+NOTE: the story has not been updated regarding to last week.
 
 
 In the Netherlands, the law regarding organ donation recently changed (July 2020). 
